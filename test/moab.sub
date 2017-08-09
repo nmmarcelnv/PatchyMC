@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+cat /dev/null >time.log
+date >>time.log
+
+N=512
+np=4
+pr=0.7
+rho=0.3
+T=TEMP
+ne=0
+nc=100
+nd=1
+nv=1
+ns=1  #number of swap
+fs=600
+dr=0.09
+dv=0.01
+rc=1.5
+pT=0.5  #translation probability
+res=0  #supply 1 to use restart file as input or 0 to initialize from scratch
+
+../../build/patchy_colloids -N ${N} -np ${np} -pr ${pr} -rho ${rho} -T ${T} -ne ${ne} -nc ${nc} -nd ${nd} -nv ${nv} -ns ${ns} -fs ${fs} -dr ${dr} -dv ${dv} -rc ${rc} -pt ${pT} >result.${T}.out
+
+date >>time.log
